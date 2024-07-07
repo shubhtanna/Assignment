@@ -1,34 +1,3 @@
-// import React, { useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import { Container, Typography, Box } from '@mui/material';
-
-// const TableData: React.FC = () => {
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     const userDetails = localStorage.getItem('userDetails');
-//     if (!userDetails) {
-//       alert('You must enter your details before accessing this page.');
-//       navigate('/');
-//     }
-//   }, [navigate]);
-
-//   return (
-//     <Container>
-//       <Box sx={{ mt: 4 }}>
-//         <Typography variant="h4" gutterBottom>
-//           Welcome to the Second Page
-//         </Typography>
-//         <Typography variant="body1">
-//           You have successfully submitted your details.
-//         </Typography>
-//       </Box>
-//     </Container>
-//   );
-// };
-
-// export default TableData;
-
 import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
@@ -41,12 +10,15 @@ const Table = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-        const userDetails = localStorage.getItem('userDetails');
-        if (!userDetails) {
-          alert('You must enter your details before accessing this page.');
-          navigate('/');
-        }
-      }, [navigate]);
+    const userDetails = localStorage.getItem('userDetails');
+    if (!userDetails) {
+      console.log('User details not found in localStorage');
+      alert('You must enter your details before accessing this page.');
+      navigate('/');
+    } else {
+      console.log('User details found:', userDetails);
+    }
+  }, [navigate]);
 
   useEffect(() => {
     const fetchData = async () => {
